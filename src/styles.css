@@ -1,0 +1,53 @@
+/** @format */
+
+h1,
+h2,
+p,
+card,
+footer {
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+button {
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+.card-img {
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+  width: 80%;
+  display: block;
+}
+
+.cloudy {
+  width: 200px;
+}
+
+.humidity,
+.description {
+  margin-top: 50px;
+}
+
+.date {
+  font-size: 25px;
+  margin-left: 30px;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: blanchedalmond;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 20px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,3 @@
+[Info] Successfuly preconnected to https://fonts.gstatic.com/
+[Error] SyntaxError: Unexpected string literal "san francisco". Expected a property name after '.'.
+	(anonymous function) (index.js:51)
