@@ -86,43 +86,13 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${
       ".png"
   );
   });
- showForecast();
+
 
 }
 
 let search = document.querySelector("#city-search");
 search.addEventListener("submit", showTemperature);
 
-function showForecast (response){
-
-  let input = document.querySelector("#city-input");
-  let city = input.value;
-  let apiUrlf = `https://api.openweathermap.org/data/2.5/?q=${city}&appid=${apiKey}&units=metric`;
-
-  axios
-  .get(apiUrlf)
-  .then(function(response) {
-    document
-      .querySelectorAll(".day__block")
-      .forEach(function(element, index) {
-        let newday = new Date(response.data.list[index].dt_txt);
-        console.log (newday);
-        element.querySelector(".day__block-date").innerHTML = formatDate(
-          day
-        );
-        element.querySelector(".day__block-temp").innerHTML = Math.round(
-          response.data.list[index].main.temp
-        );
-
-        element
-          .querySelector(".day__block-image")
-          .setAttribute(
-            "src",
-            "http://openweathermap.org/img/w/" +
-              response.data.list[index].weather[0].icon +
-              ".png")
-
-          });});}
 
 
 
@@ -148,6 +118,13 @@ function showLocationTemperature(response) {
   let humiditydisplay = document.querySelector("#humiditydisplay");
   let humidity = response.data.main.humidity;
   humiditydisplay.innerHTML = `${humidity}`;
+
+  icon.setAttribute(
+    "src",
+    "img/" +
+      response.data.weather[0].main +
+      ".png"
+  );
 }
 
 
