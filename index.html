@@ -33,11 +33,11 @@
     </div>
     <div class="container">
         <div class="col - 6">
-          <h2 id="city-name">Hong Kong</h2>
+          <h2 id="city-name">Search for a City</h2>
         </div>
         <div class="row">
         <div class="col-6">
-          <img src="img/sunrainy.png" alt="" class="cloudy"/>
+          <img class="weather__icon weather__icon--today">
           <div class="row">
            <h2 class="date" id="livedate"> Monday 22nd Jan 2020</h2>
           </div>
@@ -55,60 +55,50 @@
       </div>
     </div>
 
-    <div class="container">
+   <div class="container">
       <h2>Forecast</h2>
       <div class="row">
+        <div class="col - 2, day__block">
+          <div class="card" style="width: 8rem">
+            <img class="card-img-top, weather__icon" alt="..." />
+            <div class="card-body">
+              <div class=".day__block-temp"></div>
+              <p class="Sunny"></p>
+            </div>
+          </div>
+          <div id="day__block-dateone"></div>
+        </div>
         <div class="col - 2">
           <div class="card" style="width: 8rem">
-            <img src="img/sunny.png" class="card-img-top" alt="..." />
+            <img class="card-img-top, weather__icon" alt="..." />
             <div class="card-body">
               <h5 class="card-title">Sunny <br>22C</h5>
               <p class="Sunny"></p>
             </div>
           </div>
-          <h2>Monday</h2>
+          <div id="day__block-datetwo"></div>
         </div>
         <div class="col - 2">
           <div class="card" style="width: 8rem">
-            <img src="img/sunny.png" class="card-img-top" alt="..." />
+            <img class="card-img-top, weather__icon" alt="..." />
             <div class="card-body">
               <h5 class="card-title">Sunny <br>22C</h5>
               <p class="Sunny"></p>
             </div>
           </div>
-          <h2>Tuesday</h2>
+          <div id="day__block-datethree"></div>
         </div>
         <div class="col - 2">
           <div class="card" style="width: 8rem">
-            <img src="img/sunny.png" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Sunny <br>22C</h5>
-              <p class="Sunny"></p>
-            </div>
-          </div>
-          <h2>Wednesday</h2>
-        </div>
-        <div class="col - 2">
-          <div class="card" style="width: 8rem">
-            <img src="img/rainy.png" class="card-img-top" alt="..." />
+            <img class="card-img-top, weather__icon" alt="..." />
             <div class="card-body">
               <h5 class="card-title">Rainy <br> 22C</h5>
               <p class="Rainy"></p>
             </div>
           </div>
-          <h2>Thursday</h2>
+          <div id="day__block-datefour"></div>
         </div>
-        <div class="col - 2">
-          <div class="card" style="width: 8rem">
-            <img src="img/sunrainy.png" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Cloudy <br> 22C</h5>
-              <p class="Cloudy"></p>
-            </div>
-          </div>
-          <h2>Friday</h2>
-        </div>
-      </div>
+        
     </div>
 
     
