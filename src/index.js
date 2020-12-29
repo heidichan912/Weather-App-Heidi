@@ -4,6 +4,7 @@ let currentTime = new Date();
 let icon = document.querySelector(".weather__icon--today");
 let apiKey = "9dc8ee199ca2304138fb3602241a70d0";
 
+
 function formatDate(date) {
   let days = [
     "Sunday",
@@ -49,18 +50,24 @@ function updateDate() {
 
 updateDate();
 
-function showTemperature(response) {
+function showTemperature(event) {
+event.preventDefault();
   
-  let input = document.querySelector("#city-input");
-  let city = input.value;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+let input = document.querySelector("#city-input");
+let city = input.value;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios
   .get(apiUrl)
   .then (function (response){
+    
+ 
+  let finalcitydisplay = response.data.name;
+  console.log (response.data.name);
+  let cityname = document.querySelector("#city-name")
+  cityname.innerHTML = finalcitydisplay;
 
-  console.log(response.data);
+
   let temperature = Math.round(response.data.main.temp);
-  console.log(temperature);
   let temperaturedisplay = document.querySelector("#temperaturedisplay");
   temperaturedisplay.innerHTML = ` ${temperature}`;
 
@@ -78,75 +85,53 @@ function showTemperature(response) {
       response.data.weather[0].main +
       ".png"
   );
-
-  console.log (response.data.weather[0].main)
-
   });
-  showForecast();
+ showForecast();
+
 }
-
-function showForecast (response){
-  let input = document.querySelector("#city-input");
-  let city = input.value;
-  let apiurlf = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`
-  let dateone = document.querySelector("#day__block-dateone");
-  let datetwo = document.querySelector("#day__block-datetwo");
-  let datethree = document.querySelector("#day__block-datethree");
-  let datefour = document.querySelector("#day__block-datefour");
-  let iconone = document.querySelector("#weather__iconone");
-
-
-
-  axios
-  .get(apiurlf)
-  .then (function (response){
-console.log(response.data);
-
-console.log (response.data.list[8].dt_txt)
-let fdayone = (response.data.list[8].dt_txt)
-dateone.innerHTML = `${fdayone}`;
-
-iconone.setAttribute(
-  "src",
-  "img/" +
-    response.data.list[8].weather[0].main +
-    ".png")
-
-
-let fdaytwo = (response.data.list[16].dt_txt)
-datetwo.innerHTML = `${fdaytwo}`
-
-let fdaythree = (response.data.list[24].dt_txt)
-datethree.innerHTML = `${fdaythree}`
-
-let fdayfour = (response.data.list[32].dt_txt)
-datefour.innerHTML = `${fdayfour}`
-
-
-
-  })
-};
-
-
-function showCity(event) {
-  event.preventDefault();
-  let input = document.querySelector("#city-input");
-  let cityname = document.querySelector("#city-name");
-  let finalcitydisplay =
-    input.value.charAt(0).toUpperCase() + input.value.slice(1);
-  cityname.innerHTML = finalcitydisplay;
-  showTemperature();
-}
-
-
 
 let search = document.querySelector("#city-search");
-search.addEventListener("submit", showCity);
+search.addEventListener("submit", showTemperature);
+
+function showForecast (response){
+
+  let input = document.querySelector("#city-input");
+  let city = input.value;
+  let apiUrlf = `https://api.openweathermap.org/data/2.5/?q=${city}&appid=${apiKey}&units=metric`;
+
+  axios
+  .get(apiUrlf)
+  .then(function(response) {
+    document
+      .querySelectorAll(".day__block")
+      .forEach(function(element, index) {
+        let newday = new Date(response.data.list[index].dt_txt);
+        console.log (newday);
+        element.querySelector(".day__block-date").innerHTML = formatDate(
+          day
+        );
+        element.querySelector(".day__block-temp").innerHTML = Math.round(
+          response.data.list[index].main.temp
+        );
+
+        element
+          .querySelector(".day__block-image")
+          .setAttribute(
+            "src",
+            "http://openweathermap.org/img/w/" +
+              response.data.list[index].weather[0].icon +
+              ".png")
+
+          });});}
+
+
+
 
 function showLocationTemperature(response) {
   console.log(response);
 
   let cityname = document.querySelector("#city-name");
+
   let secondcitydisplay = `${response.data.name}`;
   let finalcitydisplay =
     secondcitydisplay.charAt(0).toUpperCase() + secondcitydisplay.slice(1);
